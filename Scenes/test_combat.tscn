@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://g4rw0byvummq"]
+
+[ext_resource type="PackedScene" uid="uid://cv207ptuvyndq" path="res://Scenes/bar.tscn" id="1_g6uic"]
+[ext_resource type="Script" uid="uid://dg364bvlu1xno" path="res://Scenes/health_manager.gd" id="1_so3hm"]
+[ext_resource type="Script" uid="uid://bbgb7s8bu8ppb" path="res://Scenes/stats.gd" id="3_tpayn"]
+[ext_resource type="PackedScene" uid="uid://bib731fuin7ti" path="res://Assets/Led export.glb" id="4_tpayn"]
+[ext_resource type="PackedScene" uid="uid://beevrks1esihi" path="res://Assets/Pokemon stadeum.glb" id="5_l8oma"]
+
+[node name="TestCombat" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.43837112, 0, -0.89879405, 0, 1, 0, 0.89879405, 0, -0.43837112, -7.258, 4.651, -9.061)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 531.0
+offset_right = 662.0
+offset_bottom = 586.0
+
+[node name="Player" type="Node" parent="."]
+
+[node name="HealthManager" type="Node" parent="Player"]
+script = ExtResource("1_so3hm")
+
+[node name="Bar" parent="Player/HealthManager" instance=ExtResource("1_g6uic")]
+
+[node name="Stats" type="Node" parent="Player"]
+script = ExtResource("3_tpayn")
+max_hp = 100.0
+defense = 20.0
+
+[node name="Led export" parent="Player" instance=ExtResource("4_tpayn")]
+transform = Transform3D(-0.4597291, 0, 0.19659388, 0, 0.5, 0, -0.19659388, 0, -0.4597291, 0, 2.1039512, -8.635979)
+
+[node name="Scenary" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scenary"]
+transform = Transform3D(0.7487012, 0, 0.6629076, -0.37235093, 0.8273454, 0.42054063, -0.5484535, -0.56169355, 0.6194345, 3.7081404, 3.6902468, 4.662402)
+
+[node name="Pokemon stadeum" parent="." instance=ExtResource("5_l8oma")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

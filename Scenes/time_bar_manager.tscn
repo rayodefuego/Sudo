@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dud6i34kfxdy3"]
+
+[ext_resource type="Script" uid="uid://cob03b4g2o0a7" path="res://Scenes/time_bar_manager.gd" id="1_xygpo"]
+
+[node name="TimeBarManager" type="Node"]
+script = ExtResource("1_xygpo")
+tick_number = 5
+add_number = -2.0

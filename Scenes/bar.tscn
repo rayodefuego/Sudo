@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv207ptuvyndq"]
+
+[ext_resource type="Script" uid="uid://b3svolb6oiigo" path="res://bar.gd" id="1_vwav4"]
+
+[node name="Bar" type="Node"]
+script = ExtResource("1_vwav4")
+max_value = 5.0
+start_value_decimal = 1.0
