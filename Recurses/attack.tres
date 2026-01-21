@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kkps3mo70j1k"]
+
+[ext_resource type="Script" uid="uid://b8nt0ktfb2pqs" path="res://Recurses/attack.gd" id="1_hi4r3"]
+
+[resource]
+script = ExtResource("1_hi4r3")
