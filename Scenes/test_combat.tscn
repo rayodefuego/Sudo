@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://g4rw0byvummq"]
+[gd_scene load_steps=7 format=3 uid="uid://g4rw0byvummq"]
 
 [ext_resource type="PackedScene" uid="uid://cv207ptuvyndq" path="res://Scenes/bar.tscn" id="1_g6uic"]
 [ext_resource type="Script" uid="uid://dg364bvlu1xno" path="res://Scenes/health_manager.gd" id="1_so3hm"]
+[ext_resource type="Script" uid="uid://psp4xbeqgt80" path="res://Scenes/button.gd" id="1_wk4dm"]
 [ext_resource type="Script" uid="uid://bbgb7s8bu8ppb" path="res://Scenes/stats.gd" id="3_tpayn"]
 [ext_resource type="PackedScene" uid="uid://bib731fuin7ti" path="res://Assets/Led export.glb" id="4_tpayn"]
 [ext_resource type="PackedScene" uid="uid://beevrks1esihi" path="res://Assets/Pokemon stadeum.glb" id="5_l8oma"]
@@ -18,27 +19,44 @@ autostart = true
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1151.0
-offset_bottom = 647.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="Control" node_paths=PackedStringArray("bar")]
 layout_mode = 0
-offset_left = 436.0
-offset_top = 531.0
-offset_right = 662.0
-offset_bottom = 586.0
+offset_left = 407.0
+offset_top = 306.0
+offset_right = 753.0
+offset_bottom = 351.0
+script = ExtResource("1_wk4dm")
+bar = NodePath("../../Player/HealthManager")
 
 [node name="Player" type="Node" parent="."]
 
 [node name="HealthManager" type="Node" parent="Player"]
 script = ExtResource("1_so3hm")
 
-[node name="Bar" parent="Player/HealthManager" instance=ExtResource("1_g6uic")]
+[node name="HealthBar" parent="Player/HealthManager" instance=ExtResource("1_g6uic")]
+max_value = 100.0
+
+[node name="EnergyManager" type="Node" parent="Player"]
+
+[node name="EnergyBar" parent="Player/EnergyManager" instance=ExtResource("1_g6uic")]
+
+[node name="RamManager" type="Node" parent="Player"]
+
+[node name="RamBar" parent="Player/RamManager" instance=ExtResource("1_g6uic")]
+
+[node name="HeatManager" type="Node" parent="Player"]
+
+[node name="HeatBar" parent="Player/HeatManager" instance=ExtResource("1_g6uic")]
 
 [node name="Stats" type="Node" parent="Player"]
 script = ExtResource("3_tpayn")
 max_hp = 100.0
-defense = 20.0
+defense = 30.0
 
 [node name="Led export" parent="Player" instance=ExtResource("4_tpayn")]
 transform = Transform3D(-0.4597291, 0, 0.19659388, 0, 0.5, 0, -0.19659388, 0, -0.4597291, 0, 2.1039512, -8.635979)

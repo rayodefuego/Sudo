@@ -4,7 +4,7 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print("hola")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,5 +12,6 @@ func _process(delta):
 	pass
 
 
-func _on_pressed():
-	bar.add_value(6)
+
+func _pressed() -> void:
+	bar.take_damage(40)
