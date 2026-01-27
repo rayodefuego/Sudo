@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://btxgy3lmdfr5u"]
+
+[ext_resource type="Script" uid="uid://fx24ivp8m52p" path="res://Scenes/actions_manager.gd" id="1_47mjb"]
+[ext_resource type="Resource" uid="uid://2x74eiug6bbr" path="res://Recurses/basic_impact.tres" id="2_xjr6o"]
+
+[node name="ActionsManager" type="Node"]
+script = ExtResource("1_47mjb")
+actions = Array[Resource]([ExtResource("2_xjr6o")])

@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_cjomj")
+attack_name = "basic_impact"
 metadata/_custom_type_script = "uid://b8nt0ktfb2pqs"

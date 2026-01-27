@@ -5,4 +5,3 @@
 [node name="Bar" type="Node"]
 script = ExtResource("1_vwav4")
 max_value = 5.0
-start_value_decimal = 1.0

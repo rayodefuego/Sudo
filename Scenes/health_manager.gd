@@ -5,7 +5,7 @@ var character_stats
 
 func _ready():
 	health_bar = find_child("HealthBar")
-	character_stats = get_node("../Stats")
+	character_stats = get_node("../../Stats")
 	if character_stats == null:
 		push_error("There is no stats in the herarchy")
 	health_bar.max_value = character_stats.max_hp

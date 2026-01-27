@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://krdfrhaeg5h6"]
+
+[ext_resource type="Script" uid="uid://dg364bvlu1xno" path="res://Scenes/health_manager.gd" id="1_ry04f"]
+[ext_resource type="PackedScene" uid="uid://cv207ptuvyndq" path="res://Scenes/bar.tscn" id="2_a6sdy"]
+
+[node name="HealthManager" type="Node"]
+script = ExtResource("1_ry04f")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_a6sdy")]
+max_value = 100.0
+start_value = 100.0

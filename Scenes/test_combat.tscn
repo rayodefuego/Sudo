@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://g4rw0byvummq"]
+[gd_scene load_steps=9 format=3 uid="uid://g4rw0byvummq"]
 
 [ext_resource type="PackedScene" uid="uid://cv207ptuvyndq" path="res://Scenes/bar.tscn" id="1_g6uic"]
-[ext_resource type="Script" uid="uid://dg364bvlu1xno" path="res://Scenes/health_manager.gd" id="1_so3hm"]
 [ext_resource type="Script" uid="uid://psp4xbeqgt80" path="res://Scenes/button.gd" id="1_wk4dm"]
+[ext_resource type="PackedScene" uid="uid://krdfrhaeg5h6" path="res://Scenes/health_manager.tscn" id="2_yybxc"]
 [ext_resource type="Script" uid="uid://bbgb7s8bu8ppb" path="res://Scenes/stats.gd" id="3_tpayn"]
+[ext_resource type="Script" uid="uid://by358d4r3fr3a" path="res://Scenes/heat_manager.gd" id="4_17s3c"]
 [ext_resource type="PackedScene" uid="uid://bib731fuin7ti" path="res://Assets/Led export.glb" id="4_tpayn"]
 [ext_resource type="PackedScene" uid="uid://beevrks1esihi" path="res://Assets/Pokemon stadeum.glb" id="5_l8oma"]
+[ext_resource type="PackedScene" uid="uid://btxgy3lmdfr5u" path="res://Scenes/actions_manager.tscn" id="7_c2ntp"]
 
 [node name="TestCombat" type="Node3D"]
 
@@ -13,7 +15,6 @@
 transform = Transform3D(-0.43837112, 0, -0.89879405, 0, 1, 0, 0.89879405, 0, -0.43837112, -7.258, 4.651, -9.061)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
 autostart = true
 
 [node name="Control" type="Control" parent="."]
@@ -31,35 +32,41 @@ offset_top = 306.0
 offset_right = 753.0
 offset_bottom = 351.0
 script = ExtResource("1_wk4dm")
-bar = NodePath("../../Player/HealthManager")
+bar = NodePath("")
 
 [node name="Player" type="Node" parent="."]
 
-[node name="HealthManager" type="Node" parent="Player"]
-script = ExtResource("1_so3hm")
+[node name="Bars" type="Node" parent="Player"]
 
-[node name="HealthBar" parent="Player/HealthManager" instance=ExtResource("1_g6uic")]
-max_value = 100.0
+[node name="HealthManager" parent="Player/Bars" instance=ExtResource("2_yybxc")]
 
-[node name="EnergyManager" type="Node" parent="Player"]
+[node name="EnergyManager" type="Node" parent="Player/Bars"]
 
-[node name="EnergyBar" parent="Player/EnergyManager" instance=ExtResource("1_g6uic")]
+[node name="EnergyBar" parent="Player/Bars/EnergyManager" instance=ExtResource("1_g6uic")]
 
-[node name="RamManager" type="Node" parent="Player"]
+[node name="RamManager" type="Node" parent="Player/Bars"]
 
-[node name="RamBar" parent="Player/RamManager" instance=ExtResource("1_g6uic")]
+[node name="RamBar" parent="Player/Bars/RamManager" instance=ExtResource("1_g6uic")]
 
-[node name="HeatManager" type="Node" parent="Player"]
+[node name="HeatManager" type="Node" parent="Player/Bars"]
+script = ExtResource("4_17s3c")
 
-[node name="HeatBar" parent="Player/HeatManager" instance=ExtResource("1_g6uic")]
+[node name="HeatBar" parent="Player/Bars/HeatManager" instance=ExtResource("1_g6uic")]
+max_value = 120.0
+min_value = -120.0
+start_value = 120.0
 
 [node name="Stats" type="Node" parent="Player"]
 script = ExtResource("3_tpayn")
 max_hp = 100.0
 defense = 30.0
+refrigeration_power = 5.0
 
 [node name="Led export" parent="Player" instance=ExtResource("4_tpayn")]
 transform = Transform3D(-0.4597291, 0, 0.19659388, 0, 0.5, 0, -0.19659388, 0, -0.4597291, 0, 2.1039512, -8.635979)
+
+[node name="ActionsManager" parent="Player" node_paths=PackedStringArray("heat_manager") instance=ExtResource("7_c2ntp")]
+heat_manager = NodePath("../Bars/HeatManager")
 
 [node name="Scenary" type="Node3D" parent="."]
 

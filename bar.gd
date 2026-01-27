@@ -5,10 +5,10 @@ signal value_changed(new_value)
 var _value: float
 @export var max_value: float
 @export var min_value: float
-@export var start_value_decimal: float
+@export var start_value: float
 
 func _ready():
-	set_value(max_value * start_value_decimal)
+	set_value(start_value)
 
 func set_value(new_value):
 	_value = new_value
